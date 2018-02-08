@@ -20,8 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array'
 ],function($api) {
     //user register
     $api->post('users', 'UsersController@store')->name('api.users.store');
+
+    $api->get('cinemas', 'CinemasController@index')->name('api.cinemas.index');
+
 });
