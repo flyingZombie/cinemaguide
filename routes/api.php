@@ -29,4 +29,6 @@ $api->version('v1', [
     $api->get('cinemas', 'CinemasController@index')->name('api.cinemas.index');
     //movies list
     $api->get('movies', 'MoviesController@index')->name('api.movies.index');
+    //post session
+    $api->post('sessions', 'SessionsController@store')->name('api.sessions.store');
 });
