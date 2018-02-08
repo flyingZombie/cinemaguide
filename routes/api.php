@@ -25,7 +25,8 @@ $api->version('v1', [
 ],function($api) {
     //user register
     $api->post('users', 'UsersController@store')->name('api.users.store');
-
+    //cinemas list
     $api->get('cinemas', 'CinemasController@index')->name('api.cinemas.index');
-
+    //movies list
+    $api->get('movies', 'MoviesController@index')->name('api.movies.index');
 });
