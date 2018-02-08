@@ -24,11 +24,22 @@ class SessionRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            //'cinema_id' => 'required|exists:cinemas,id',
-            //'movie_id' => 'required|exists:movies,mov_id',
-            //'show_time' => 'required',  //format?
-        ];
-    }
+        switch($this->method()){
+            case 'POST':
+                return [
+                    'cinema_id' => 'required|exists:cinemas,id',
+                    'movie_id' => 'required|exists:movies,mov_id',
+                    //'show_time' => 'required',  //format?
+                ];
+                break;
+            case 'PATCH':
+                return [
+                    'cinema_id' => 'exists:cinemas,id',
+                    'movie_id' => 'exists:movies,mov_id',
+                    //'show_time' => '',
+                ];
+                break;
+        }
 
+    }
 }

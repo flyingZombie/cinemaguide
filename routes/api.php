@@ -21,7 +21,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array', 'bindings']
 ],function($api) {
     //user register
     $api->post('users', 'UsersController@store')->name('api.users.store');
@@ -31,4 +31,6 @@ $api->version('v1', [
     $api->get('movies', 'MoviesController@index')->name('api.movies.index');
     //post session
     $api->post('sessions', 'SessionsController@store')->name('api.sessions.store');
+    //update session
+    $api->patch('sessions/{session}', 'SessionsController@update')->name('api.sessions.update');
 });

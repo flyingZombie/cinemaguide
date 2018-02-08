@@ -17,4 +17,12 @@ class SessionsController extends Controller
         return $this->response->item($session, new SessionTransformer())
             ->setStatusCode(201);
     }
+
+        public function update(SessionRequest $request, Session $session)
+    {
+        //$this->authorize('update', $session);
+
+        $session->update($request->all());
+        return $this->response->item($session, new SessionTransformer());
+    }
 }
