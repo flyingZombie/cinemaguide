@@ -25,4 +25,12 @@ class SessionsController extends Controller
         $session->update($request->all());
         return $this->response->item($session, new SessionTransformer());
     }
+
+        public function destroy(Session $session)
+    {
+        //$this->authorize('update', $session);
+
+        $session->delete();
+        return $this->response->noContent();
+    }
 }

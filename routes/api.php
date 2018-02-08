@@ -33,4 +33,7 @@ $api->version('v1', [
     $api->post('sessions', 'SessionsController@store')->name('api.sessions.store');
     //update session
     $api->patch('sessions/{session}', 'SessionsController@update')->name('api.sessions.update');
+    //delete session
+    $api->delete('sessions/{session}', 'SessionsController@destroy')
+    ->name('api.sessions.delete');
 });
